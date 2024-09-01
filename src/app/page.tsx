@@ -1,5 +1,5 @@
-import Image from "next/image";
+import Hero from "@/components/Hero";
 
 export default function Home() {
-  return <h1 className="text-5xl text-rose-900">hello</h1>;
+  return <Hero />;
 }

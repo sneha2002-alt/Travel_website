@@ -1,11 +1,80 @@
 // NAVIGATION
 export const NAV_LINKS = [
   { href: "/", key: "home", label: "Home" },
-  { href: "/", key: "how_CampHaven_work", label: "How CampHaven Work?" },
-  { href: "/", key: "services", label: "Services" },
-  { href: "/", key: "pricing ", label: "Pricing " },
-  { href: "/", key: "contact_us", label: "Contact Us" },
+  {
+    href: "#",
+    key: "how_CampHaven_work",
+    label: "How CampHaven Work?",
+    items: [
+      { href: "/introduction", label: "Introduction" },
+      { href: "/features", label: "Features" },
+      { href: "/guide", label: "User Guide" },
+      { href: "/testimonials", label: "Testimonials" },
+      { href: "/faqs", label: "FAQs" },
+    ],
+  },
+  {
+    href: "#",
+    key: "services",
+    label: "Services",
+    items: [
+      { href: "/camping-packages", label: "Camping Packages" },
+      { href: "/event-planning", label: "Event Planning" },
+      { href: "/equipment-rental", label: "Equipment Rental" },
+      { href: "/guided-tours", label: "Guided Tours" },
+      { href: "/workshops", label: "Workshops" },
+    ],
+  },
+  {
+    href: "#",
+    key: "pricing",
+    label: "Pricing",
+    items: [
+      { href: "/camping-pricing", label: "Camping Packages Pricing" },
+      { href: "/event-pricing", label: "Event Planning Pricing" },
+      { href: "/rental-pricing", label: "Equipment Rental Pricing" },
+      { href: "/membership-plans", label: "Membership Plans" },
+      { href: "/discounts-offers", label: "Discounts & Offers" },
+    ],
+  },
+  {
+    href: "#",
+    key: "contact_us",
+    label: "Contact Us",
+    items: [
+      { href: "/inquiries", label: "General Inquiries" },
+      { href: "/support", label: "Support" },
+      { href: "/partnerships", label: "Partnership Opportunities" },
+      { href: "/careers", label: "Careers" },
+      { href: "/location", label: "Location & Hours" },
+    ],
+  },
 ];
+
+// Hero Section
+export const heroData = {
+  title: "Truno Haven Camp",
+  description:
+    "Embark on a journey with us to discover the untouched beauty of nature. Your adventure around the world starts here, with just one app. Explore the world's natural beauty. One app, endless adventures.",
+  reviews: {
+    count: "284",
+    text: "Excellent Reviews",
+  },
+  locationInfo: {
+    location: "Aguas Calientes",
+    distance: "173.28 mi",
+    elevation: "2.040 km",
+  },
+  buttons: [
+    { title: "Download App", variant: "btn_green", icon: "" },
+    { title: "How we work?", variant: "btn_white_text", icon: "/play.svg" },
+  ],
+  images: {
+    camp: "/camp.svg",
+    star: "/star.svg",
+    close: "/close.svg",
+  },
+};
 
 // CAMP SECTION
 export const PEOPLE_URL = [
