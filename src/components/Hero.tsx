@@ -1,34 +1,66 @@
 "use client";
 import { useState, useEffect } from "react";
-
 import Image from "next/image";
 import Button from "./Button";
 import { heroData } from "@/data/index";
+import { motion, useAnimation } from "framer-motion";
 
 const Hero = () => {
   const [reviewCount, setReviewCount] = useState(0);
+  const [isLocationVisible, setIsLocationVisible] = useState(true);
+  const controls = useAnimation();
 
   useEffect(() => {
+    // Increment reviews count
     const incrementReviews = () => {
-      if (reviewCount < parseInt(heroData.reviews.count.replace("k", "000"))) {
-        setReviewCount((prev) => prev + 10);
+      const targetCount = parseInt(heroData.reviews.count.replace("k", "000"));
+      if (reviewCount < targetCount) {
+        setReviewCount((prev) => Math.min(prev + 10, targetCount));
       }
     };
 
     const interval = setInterval(incrementReviews, 10);
+
     if (reviewCount >= parseInt(heroData.reviews.count.replace("k", "000"))) {
       clearInterval(interval);
     }
 
-    // Clean up the interval on component unmount
     return () => clearInterval(interval);
   }, [reviewCount]);
+
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+
+    if (!isLocationVisible) {
+      timer = setTimeout(() => {
+        setIsLocationVisible(true);
+      }, 20000); // 20 seconds
+    }
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [isLocationVisible]);
+
+  useEffect(() => {
+    // Animate elements when component mounts
+    controls.start({
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" },
+    });
+  }, [controls]);
 
   return (
     <section className="max-container padding-container flex flex-col gap-20 py-10 pb-32 md:gap-28 lg:py-16 xl:flex-row">
       <div className="hero-map" />
+      <div className="hero-map2" />
 
-      <div className="relative z-20 flex flex-1 flex-col xl:w-1/2">
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={controls}
+        className="relative z-20 flex flex-1 flex-col xl:w-1/2"
+      >
         <Image
           src={heroData.images.camp}
           alt="camp"
@@ -65,51 +97,62 @@ const Hero = () => {
         </div>
 
         <div className="flex flex-col w-full gap-3 sm:flex-row">
-          {heroData.buttons.map((button, index) => (
-            <Button
-              key={index}
-              type="button"
-              title={button.title}
-              icon={button.icon}
-              variant={button.variant}
-            />
-          ))}
+          <Button type="button" title="Download App" variant="btn_green" />
+          <Button
+            type="button"
+            title="How we work?"
+            icon="/play.svg"
+            variant="btn_white_text"
+          />
         </div>
-      </div>
+      </motion.div>
 
-      <div className="relative flex flex-1 items-start">
-        <div className="relative z-20 flex w-[268px] flex-col gap-8 rounded-3xl bg-green-90 px-7 py-8">
-          <div className="flex flex-col">
+      {isLocationVisible && (
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="relative flex flex-1 items-start lg:mr-4"
+        >
+          <div className="relative z-20 flex w-[268px] flex-col gap-8 rounded-3xl bg-green-90 px-7 py-8 ">
+            <div className="flex flex-col">
+              <div className="flexBetween">
+                <p className="regular-16 text-gray-20">Location</p>
+                <button
+                  onClick={() => setIsLocationVisible(false)}
+                  aria-label="Close"
+                  className="p-1"
+                >
+                  <Image
+                    src={heroData.images.close}
+                    alt="close"
+                    width={24}
+                    height={24}
+                  />
+                </button>
+              </div>
+              <p className="bold-20 text-white">
+                {heroData.locationInfo.location}
+              </p>
+            </div>
+
             <div className="flexBetween">
-              <p className="regular-16 text-gray-20">Location</p>
-              <Image
-                src={heroData.images.close}
-                alt="close"
-                width={24}
-                height={24}
-              />
-            </div>
-            <p className="bold-20 text-white">
-              {heroData.locationInfo.location}
-            </p>
-          </div>
-
-          <div className="flexBetween">
-            <div className="flex flex-col">
-              <p className="regular-16 block text-gray-20">Distance</p>
-              <p className="bold-20 text-white">
-                {heroData.locationInfo.distance}
-              </p>
-            </div>
-            <div className="flex flex-col">
-              <p className="regular-16 block text-gray-20">Elevation</p>
-              <p className="bold-20 text-white">
-                {heroData.locationInfo.elevation}
-              </p>
+              <div className="flex flex-col">
+                <p className="regular-16 block text-gray-20">Distance</p>
+                <p className="bold-20 text-white">
+                  {heroData.locationInfo.distance}
+                </p>
+              </div>
+              <div className="flex flex-col">
+                <p className="regular-16 block text-gray-20">Elevation</p>
+                <p className="bold-20 text-white">
+                  {heroData.locationInfo.elevation}
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      )}
     </section>
   );
 };

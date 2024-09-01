@@ -61,14 +61,11 @@ export const heroData = {
     text: "Excellent Reviews",
   },
   locationInfo: {
-    location: "Aguas Calientes",
-    distance: "173.28 mi",
-    elevation: "2.040 km",
+    location: "Zermatt",
+    distance: "112.47 mi",
+    elevation: "1.620 km",
   },
-  buttons: [
-    { title: "Download App", variant: "btn_green", icon: "" },
-    { title: "How we work?", variant: "btn_white_text", icon: "/play.svg" },
-  ],
+
   images: {
     camp: "/camp.svg",
     star: "/star.svg",
