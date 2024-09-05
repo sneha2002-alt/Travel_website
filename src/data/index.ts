@@ -81,6 +81,72 @@ export const PEOPLE_URL = [
   "/person-4.png",
 ];
 
+export const CAMPSITE_HEADING = "Camping: Nature's Ultimate Therapy";
+
+export const CAMPSITE_DATA = [
+  {
+    backgroundImage: "bg-bg-img-9",
+    title: "Wildlife Safari Camp",
+    subtitle: "Bandhavgarh, Madhya Pradesh",
+    peopleJoined: "40+ Joined",
+  },
+
+  {
+    backgroundImage: "bg-bg-img-3",
+    title: "Mountain View Lodge",
+    subtitle: "Darjeeling, West Bengal",
+    peopleJoined: "75+ Joined",
+  },
+  {
+    backgroundImage: "bg-bg-img-4",
+    title: "Forest Retreat",
+    subtitle: "Deep in the Woods",
+    peopleJoined: "40+ Joined",
+  },
+  {
+    backgroundImage: "bg-bg-img-5",
+    title: "Sunrise Point Camp",
+    subtitle: "Kodaikanal, Tamil Nadu",
+    peopleJoined: "60+ Joined",
+  },
+  {
+    backgroundImage: "bg-bg-img-6",
+    title: "Lakeside Haven",
+    subtitle: "Pangong Lake, Ladakh",
+    peopleJoined: "45+ Joined",
+  },
+  {
+    backgroundImage: "bg-bg-img-7",
+    title: "Desert Mirage Camp",
+    subtitle: "Jaisalmer, Rajasthan",
+    peopleJoined: "70+ Joined",
+  },
+  {
+    backgroundImage: "bg-bg-img-8",
+    title: "Forest Edge Retreat",
+    subtitle: "Munnar, Kerala",
+    peopleJoined: "55+ Joined",
+  },
+  {
+    backgroundImage: "bg-bg-img-9",
+    title: "Cliffside Escape",
+    subtitle: "Meghalaya, India",
+    peopleJoined: "50+ Joined",
+  },
+  {
+    backgroundImage: "bg-bg-img-2",
+    title: "Beachfront Bliss",
+    subtitle: "Goa, India",
+    peopleJoined: "80+ Joined",
+  },
+  {
+    backgroundImage: "bg-bg-img-1",
+    title: "Snowy Peaks Camp",
+    subtitle: "Manali, Himachal Pradesh",
+    peopleJoined: "65+ Joined",
+  },
+];
+
 // FEATURES SECTION
 export const FEATURES = [
   {

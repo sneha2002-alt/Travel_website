@@ -7,7 +7,7 @@ import MobileMenuSheet from "./NavSheet";
 
 const Navbar = () => {
   return (
-    <nav className="w-full flexBetween max-container padding-container relative z-30 py-4">
+    <nav className="w-full flexBetween max-container padding-container relative z-30 pt-4 pb-2 border-b-2 border-gray-100">
       <div className="relative">
         <Link href="/">
           <Image
